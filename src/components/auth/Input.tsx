@@ -18,7 +18,7 @@ export const Input: React.FC<Props> = ({ label, name, onChange, type, value }) =
         onChange={onChange}
         required
         value={value}
-        />
+      />
     </label>
   )
 }
