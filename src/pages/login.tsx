@@ -1,22 +1,23 @@
-import { useState } from "react"
-import { useLogin } from "../hooks/user"
+import { useLogin } from "../hooks/useLogin"
+import type { Field, LoginRequestBody, LoginResponse } from "../types/login"
+import { Form } from "../components/auth/Form"
+
+const fields: Field<LoginRequestBody>[] = [
+  { initialValue: "", label: "Email", name: "email", type: "email" },
+  { initialValue: "", label: "Password", name: "password", type: "password" },
+]
 
 export const Login = () => {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const {error, isError, isPending, mutate} = useLogin()
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    mutate({email, password})
-  }
+  const { error, isPending, mutate } = useLogin()
 
   return (
-    <form className="flex flex-col" onSubmit={handleSubmit}>
-      <input type="mail" value={email} name="email" id="email" onChange={(e) => setEmail(e.target.value)} required placeholder="Email" />
-      <input type="password" value={password} name="password" id="password" onChange={(e) => setPassword(e.target.value)} required placeholder="Password" />
-      <button type="submit" disabled={isPending}>log in</button>
-      {isError && <p>{error.response?.data.message}</p>}
-    </form>
+    <Form<LoginRequestBody, LoginResponse>
+      error={error?.response?.data.message}
+      fields={fields}
+      onSubmit={mutate}
+      submitDisabled={isPending}
+      submitLabel="Log in"
+      title="Log in"
+    />
   )
 }
