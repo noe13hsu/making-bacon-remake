@@ -1,4 +1,4 @@
-import { useLogin } from "../hooks/useLogin"
+import { useLogin } from "../hooks/user/useLogin"
 import type { Field, LoginRequestBody, LoginResponse } from "../types/login"
 import { Form } from "../components/auth/Form"
 

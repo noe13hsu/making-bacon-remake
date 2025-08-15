@@ -1,6 +1,6 @@
 import { Navigate, Outlet } from "react-router-dom"
 
-import { useUserQuery } from "../../hooks/useUserQuery"
+import { useUserQuery } from "../../hooks/user/useUserQuery"
 
 export const PublicRoute = () => {
   const { data: user, isLoading} = useUserQuery()

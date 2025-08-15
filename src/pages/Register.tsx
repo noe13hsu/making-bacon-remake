@@ -1,6 +1,6 @@
 import { Form } from "../components/auth/Form"
 import type { Field, RegisterRequestBody, RegisterResponse } from "../types/register"
-import { useRegister } from "../hooks/useRegister"
+import { useRegister } from "../hooks/user/useRegister"
 
 const fields: Field<RegisterRequestBody>[] = [
   { initialValue: "", label: "Email", name: "email", type: "email" },
