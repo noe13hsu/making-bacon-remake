@@ -1,4 +1,5 @@
 import type { Transaction } from "../../types/transactions"
+import { formatDate } from "../../utils/date"
 
 interface Props {
   transaction: Transaction
@@ -6,7 +7,6 @@ interface Props {
 
 export const Card = ({ transaction }: Props) => {
   const {amount, description, category, type, date} = transaction
-  const dateLocaleString = new Date(date).toLocaleString()
   const upperCasedType = type.toUpperCase()
 
   return (
@@ -19,7 +19,7 @@ export const Card = ({ transaction }: Props) => {
         <span>{upperCasedType}</span>
         <span>{category}</span>
       </div>
-      <span>{dateLocaleString}</span>
+      <span>{formatDate(date)}</span>
     </div>
   )
 }
