@@ -1,9 +1,9 @@
 import { Navigate, Outlet } from "react-router-dom"
 
-import { useUserQuery } from "../../hooks/user/useUserQuery"
+import { useUser } from "../../hooks/user/useUser"
 
 export const PublicRoute = () => {
-  const { data: user, isLoading} = useUserQuery()
+  const { data: user, isLoading} = useUser()
 
   if (isLoading) {
     return <p>Checking authentication...</p>
